@@ -1,0 +1,11 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "comatthewb/fec-related-items-component"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "8082"
+    }
+  ]
+}
