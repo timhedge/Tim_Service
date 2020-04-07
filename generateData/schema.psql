@@ -1,0 +1,11 @@
+DROP DATABASE IF EXISTS relateditem;
+
+CREATE DATABASE relateditem;
+
+USE relateditem;
+
+CREATE TABLE items (
+  id INT SERIAL NOT NULL PRIMARY KEY,
+  productname text,
+  imageurl text
+);
