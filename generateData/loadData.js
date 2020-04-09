@@ -2,9 +2,9 @@ const dbCassandra = require('./loadDataCassandra.js');
 const dbPostgres = require('./loadDataPostgres.js');
 const data = require('./generateData.js');
 
-let db = 'postgres'; // choose between 'cassandra' and 'postgres'
+let db = 'cassandra'; // choose between 'cassandra' and 'postgres'
 let uploadType = 'data'; // choose between 'batch' for batch upload, 'data' for non-batch upload
-let batchSize = 2000; // change the batch size to compare performance
+let batchSize = 10000; // change the batch size to compare performance
 let uploadSize = 10000000; // change the upload size
 
 const loadBatchesToDb = (db) => {

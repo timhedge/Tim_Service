@@ -2,7 +2,7 @@ const faker = require('faker');
 
 let totalCount = 0;
 
-const createDataInserts = (dbType, uploadType, batchSize) => { // pass in 'cassandra' for Cassandra, 'postgres' for Postgres, 'batch' for batch upload, 'data' for non-batch upload
+const createDataInserts = (dbType, uploadType, batchSize) => {
   let batchCount = 1;
   let imageNum = 0;
   let partitionId = 1;
@@ -39,7 +39,7 @@ const createDataInserts = (dbType, uploadType, batchSize) => { // pass in 'cassa
       imageNum = 0;
     }
 
-    if (partitionId <= 200) {
+    if (partitionId <= 1000) {
       partitionId++;
     } else {
       partitionId = 1;
