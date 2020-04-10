@@ -1,3 +1,5 @@
+require('newrelic');
+
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -12,11 +14,10 @@ app.use(cors());
 
 // Routes
 app.get("/items", (req, res) => {
-  db.getAllItems((err, result) => {
+  db.getSixItems((err, result) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(result);
       res.send(result);
     }
   });

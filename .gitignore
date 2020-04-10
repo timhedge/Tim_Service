@@ -1,2 +1,4 @@
 node_modules
 generateData/randomImages/*
+newrelic.js
+newrelic_agent.log

@@ -10,7 +10,7 @@ class RelatedItems extends Component {
     this.state = {
       imagesURL: [],
       description: [],
-      imageID: 0
+      imageID: []
     };
     this.clickHandler = this.clickHandler.bind(this);
   }
@@ -18,22 +18,20 @@ class RelatedItems extends Component {
   componentDidMount() {
     axios
       .get(
-        "http://mattservice-env.eba-grpmrn9j.us-east-2.elasticbeanstalk.com/items"
+        "http://localhost:8082/items"
       )
       .then(response => {
+        console.log(response.data);
         let randomItemsURL = [];
         let randomItemsName = [];
         let randomItemsID = [];
-        while (randomItemsURL.length < 6) {
-          let randomIndex = Math.floor(
-            Math.random() * Math.floor(response.data.length)
-          );
-          // console.log(response.data[randomIndex]);
-          randomItemsURL.push(response.data[randomIndex].item_url);
-          randomItemsName.push(response.data[randomIndex].item_name);
-          randomItemsID.push(response.data[randomIndex].itemID);
-          response.data.splice(randomIndex, 1);
+
+        for (let i = 0; i < response.data.length; i++) {
+          randomItemsURL.push(response.data[i].imageurl);
+          randomItemsName.push(response.data[i].productname);
+          randomItemsID.push(response.data[i].id);
         }
+
         this.setState({
           imagesURL: [...randomItemsURL],
           description: [...randomItemsName],
@@ -64,7 +62,7 @@ class RelatedItems extends Component {
               const imageIDRender = this.state.imageID[index];
 
               return (
-                <div className="item-description-parent">
+                <div key={index} className="item-description-parent">
                   <RelatedItem
                     key={index}
                     imageIDRender={imageIDRender}
